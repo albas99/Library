@@ -1,0 +1,34 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#title{
+    text-align: center;
+    width: 100%;
+    height: 5vh;
+    background-color: antiquewhite;
+}
+
+.container{
+    width: 100%;
+    height: 95vh;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+
+.nav-bar{
+    border-right: 1px solid gray;
+    padding-top: 2rem;
+    text-align: center;
+}
+
+.button{
+    width: 80%;
+    margin-top: 2rem;
+}
+
+.main-library{
+    
+}
