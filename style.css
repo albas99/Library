@@ -30,5 +30,22 @@
 }
 
 .main-library{
-    
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1rem;
+    margin: 1rem;
+}
+
+.card{
+    border: 1px solid black;
+    text-align: center;
+    height: 50%;
+}
+
+.card h2{
+    padding: 2rem 0;
+}
+
+.card h3{
+    margin: 1rem 0;
 }
