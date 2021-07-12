@@ -1,5 +1,9 @@
 let myLibrary = ["book1", "book2", "book3", "book4"];
 
+let modal = document.querySelector('.modal');
+let addButton = document.querySelector('.addButton');
+addButton.addEventListener('click', displayModal);
+
 function Book(title, author, pages, read) {
     this.title = title
     this.author = author
@@ -24,3 +28,13 @@ function addBookToLibrary() {
 }
 addBookToLibrary();
 // The books will be displayed depending on how many of them are in the array, so when a user fills in the form, a new Book() will be created which will be added to the array and then the addBookToLibrary function will be called and the book will be displayed.
+
+function displayModal() {
+    modal.style.display = "block";
+}
+
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
