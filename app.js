@@ -9,65 +9,56 @@ addButton.addEventListener("click", displayModal);
 closeModalButton.addEventListener("click", closeModal);
 
 const modalForm = document.querySelector(".modal-form");
-const submitBook = document.querySelector(".submit-book");
-submitBook.addEventListener("click", addBookToLibrary);
+modalForm.addEventListener("submit", addBookToLibrary);
 
 let title = document.querySelector("#title");
 let author = document.querySelector("#author");
 let pages = document.querySelector("#pages");
 let status = document.querySelector("#status");
 
-function Book(title, author, pages, status) {
+function Book(title, author, pages, status, id) {
   this.title = title.value;
   this.author = author.value;
   this.pages = pages.value;
   this.status = status.value;
-  // this.info = function () {
-  //     return(`${this.title} by ${this.author}, ${this.pages}, ${this.read}`)
-  // }
+  this.id = myLibrary.length;
 }
-
-// let theHobbit = new Book("The Hobbit", "J.R. Tolkien", "295 pages", "not read");
-
-// console.log(theHobbit.info());
-
-// function createNewBook(e) {
-//     e.preventDefault();
-//     const book = new Book(title, author, pages, status);
-//     console.log(title.value);
-//     console.log(author.value);
-//     console.log(pages.value);
-//     // console.log(status.value);
-//     myLibrary.push(book);
-//     addBookToLibrary();
-//     closeModal();
-// }
 
 // CREATE AND ADD BOOK TO LIBRARY
 function addBookToLibrary(e) {
   e.preventDefault();
   let book = new Book(title, author, pages, status);
+  book.id += 1;
   let card = document.createElement("div");
   let bookTitle = document.createElement("h2");
   let bookAuthor = document.createElement("h3");
   let numberOfPages = document.createElement("p");
   let readingStatus = document.createElement("p");
+  let removeBookButton = document.createElement("button");
+  removeBookButton.append("Remove");
+  removeBookButton.setAttribute("class", "remove-book");
+  removeBookButton.addEventListener("click", removeBookFromLibrary);
   bookTitle.textContent = book.title;
   bookAuthor.textContent = book.author;
-    numberOfPages.textContent = `${book.pages} pages`;
-    readingStatus.textContent = `Status: ${book.status}`
+  numberOfPages.textContent = `${book.pages} pages`;
+  readingStatus.textContent = `Status: ${book.status}`;
   myLibrary.push(book);
   card.setAttribute("class", "card");
+  card.setAttribute("data-book-id", book.id);
   card.append(bookTitle);
   card.append(bookAuthor);
-    card.append(numberOfPages);
-    card.append(readingStatus);
+  card.append(numberOfPages);
+  card.append(readingStatus);
+  card.append(removeBookButton);
   mainLibrary.appendChild(card);
   closeModal();
-    modalForm.reset();
+  modalForm.reset();
+  console.log(book.id);
 }
-// addBookToLibrary();
-// The books will be displayed depending on how many of them are in the array, so when a user fills in the form, a new Book() will be created which will be added to the array and then the addBookToLibrary function will be called and the book will be displayed.
+
+function removeBookFromLibrary() {
+  
+}
 
 function displayModal() {
   modal.style.display = "block";
