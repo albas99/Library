@@ -18,34 +18,27 @@
         <button class="button addButton">ADD BOOK</button>
     </nav>
     <div class="main-library">
-        <!-- <div class="card">
-            <h2>Title</h2>
-            <h3>Author</h3>
-            <h3>234 pages</h3>
-            <form>
-                <label for="read">Read</label>
-                <input type="radio" name="status" id="read" value="read">
-                <label for="not-read">Not Read</label>
-                <input type="radio" name="status" id="not-read" value="not-read">
-            </form>
-        </div> -->
         <div class="modal">
             <div class="modal-content">
                 <span class="close-modal">&times;</span>
             <form class="modal-form">
                 <label for="title">Title</label>
-                <input type="text" name="title" id="title" data-book-title="title" value="" required>
+                <input type="text" name="title" id="title"  value="" required>
                 <label for="author">Author</label>
                 <input type="text" name="author" id="author" value="" required>
                 <label for="pages">No. of Pages</label>
                 <input type="number" name="pages" id="pages" value="" required>
-                <label for="status">Status</label>
-                <select name="status" id="status">
+                <!-- <label for="pages-read">Pages Read</label>
+                <input type="number" name="pages-read" id="pages-read" value="" required>
+                <p class="pages-warning">Pages read should not be more than total no. of pages</p> -->
+                <!-- <label for="status">Status</label>
+                <select name="status" id="status" class="status">
                     <option value="Not Read">Not Read</option>
                     <option value="Currently Reading">Currently Reading</option>
                     <option value="Read">Read</option>
-                </select>
+                </select> -->
                 <button type="submit" value="Add" class="submit-book">Add</button>
+                <!-- <button type="submit" value="Update" class="update-book">Update</button> -->
             </form>
             </div>
         </div>

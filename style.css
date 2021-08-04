@@ -97,9 +97,33 @@
     cursor: pointer;
 }
 
+.pages-warning{
+    color: #ff0000;
+    display: none;
+}
+
 .remove-book{
     width: 5rem;
     position: absolute;
     right: 1rem;
     bottom: 1rem;
+}
+
+/* .update-book-button{
+    width: 5rem;
+    position: absolute;
+    left: 1rem;
+    bottom: 1rem;
+} */
+
+.submit-book{
+    display: block;
+}
+
+.update-book{
+    display: none;
+}
+
+.status{
+    
 }

@@ -10,38 +10,70 @@ closeModalButton.addEventListener("click", closeModal);
 
 const modalForm = document.querySelector(".modal-form");
 modalForm.addEventListener("submit", addBookToLibrary);
+let submitBook = document.querySelector(".submit-book");
+
 
 let title = document.querySelector("#title");
 let author = document.querySelector("#author");
 let pages = document.querySelector("#pages");
-let status = document.querySelector("#status");
+// let pagesRead = document.querySelector("#pages-read");
+// let pagesWarning = document.querySelector(".pages-warning")
 
-function Book(title, author, pages, status, id) {
+// TO DO: REFACTOR THIS INTO A BOOK PROTOTYPE LATER
+generateRandomId = () => {
+  return Math.floor(Math.random() * 10000);
+}
+function Book(title, author, pages, id) {
   this.title = title.value;
   this.author = author.value;
   this.pages = pages.value;
-  this.status = status.value;
-  this.id = myLibrary.length;
+  // this.pagesRead = pagesRead.value;
+  this.id = generateRandomId();
 }
 
 // CREATE AND ADD BOOK TO LIBRARY
 function addBookToLibrary(e) {
   e.preventDefault();
-  let book = new Book(title, author, pages, status);
-  book.id += 1;
+  let book = new Book(title, author, pages,);
   let card = document.createElement("div");
   let bookTitle = document.createElement("h2");
   let bookAuthor = document.createElement("h3");
   let numberOfPages = document.createElement("p");
-  let readingStatus = document.createElement("p");
+  // let numberOfPagesRead = document.createElement("p");
+  let readingStatus = document.createElement("select");
+  let notRead = document.createElement("option");
+  notRead.textContent = "Not Read";
+  let currentlyReading = document.createElement("option");
+  currentlyReading.textContent = "Currently Reading";
+  let read = document.createElement("option");
+  read.textContent = "Read";
+  readingStatus.append(notRead);
+  readingStatus.append(currentlyReading);
+  readingStatus.append(read);
   let removeBookButton = document.createElement("button");
   removeBookButton.append("Remove");
   removeBookButton.setAttribute("class", "remove-book");
   removeBookButton.addEventListener("click", removeBookFromLibrary);
+  // let updateBookButton = document.createElement("button");
+  // updateBookButton.append("Update");
+  // updateBookButton.setAttribute("class", "update-book-button");
+  // updateBookButton.addEventListener("click", function () {
+  //   displayModal();
+  //   title.value = book.title;
+  //   author.value = book.author;
+  //   pages.value = book.pages;
+  //   let updateBook = document.querySelector(".update-book");
+  //   submitBook.style.display = "none";
+  //   updateBook.style.display = "block";
+  //   bookTitle.textContent = title.value;
+  //   bookAuthor.textContent = author.value;
+  //   numberOfPages.textContent = pages.value;
+  // });
   bookTitle.textContent = book.title;
   bookAuthor.textContent = book.author;
   numberOfPages.textContent = `${book.pages} pages`;
-  readingStatus.textContent = `Status: ${book.status}`;
+  // readingStatus.textContent = `Status: ${book.status}`;
+  // numberOfPagesRead.textContent = `Pages Read: ${book.pagesRead}`;
   myLibrary.push(book);
   card.setAttribute("class", "card");
   card.setAttribute("data-book-id", book.id);
@@ -49,16 +81,38 @@ function addBookToLibrary(e) {
   card.append(bookAuthor);
   card.append(numberOfPages);
   card.append(readingStatus);
+  // card.append(numberOfPagesRead);
   card.append(removeBookButton);
+  // card.append(updateBookButton);
   mainLibrary.appendChild(card);
   closeModal();
   modalForm.reset();
-  console.log(book.id);
 }
 
 function removeBookFromLibrary() {
-  
+  let card = document.querySelector(".card");
+  card.remove();
+  myLibrary = myLibrary.filter(book => Number(card.dataset.bookId) !== book.id);
 }
+
+// If not read {progress = 0%}
+// If read {progrees = 100%}
+// If currently reading{progress = %of total number of pages}
+// pages read should not be more than total number of pages
+
+
+// Book.prototype = {
+//   warning() {
+//     if (this.pagesRead > this.pages) {
+//       pagesWarning.style.display = "block";
+//       modalForm.removeEventListener("submit", addBookToLibrary);
+//     }
+//   },
+//   // info() {
+//   //   console.log(`${this.title} by ${this.author}, ${this.pages} ${this.status}`);
+//   // }
+// }
+
 
 function displayModal() {
   modal.style.display = "block";
