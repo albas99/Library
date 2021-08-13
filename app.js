@@ -35,6 +35,7 @@ function createNewBook(e) {
   let book = new Book(title, author, pages);
   myLibrary.push(book);
   createBookCard(book);
+  saveToStorage();
   closeModal();
   modalForm.reset();
 }
@@ -84,6 +85,24 @@ function removeBookFromLibrary() {
     (book) => Number(card.dataset.bookId) !== book.id
   );
 }
+
+function saveToStorage() {
+  localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
+}
+
+function getFromStorage() {
+  if (!localStorage.myLibrary) {
+    addBookToShelf();
+  }
+  else {
+    let mySavedLibrary = localStorage.getItem('myLibrary');
+    mySavedLibrary = JSON.parse(mySavedLibrary);
+    myLibrary = mySavedLibrary;
+    addBookToShelf();
+  }
+}
+
+getFromStorage();
 
 function displayModal() {
   modal.style.display = "block";
