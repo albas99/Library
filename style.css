@@ -6,6 +6,10 @@
     box-sizing: border-box;
 }
 
+body{
+    height: 100vh;
+}
+
 #heading{
     text-align: center;
     width: 100%;
@@ -15,7 +19,7 @@
 
 .container{
     width: 100%;
-    height: 100vh;
+    /* height: 100vh; */
     background: url(/bg.jpeg) center no-repeat;
     background-size: cover;
     padding-top: 1rem;
@@ -25,11 +29,12 @@
     background: transparent;
     border: none;
     font-size: 3rem;
-    position: absolute;
+    position: fixed;
     bottom: 2rem;
     right: 2rem;
     color: rgb(3, 136, 160);
     transition: all .5s ease-in-out;
+    z-index: 1;
     
 }
 
@@ -199,4 +204,29 @@ serif;
 .number-of-pages{
     margin: 1rem 0;
     font-size: 1.2rem;
+}
+
+@media only screen and (max-width: 1024px){
+    .book-shelf{
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .add-button{
+        z-index: 1;
+        position: fixed;
+    }
+
+    .modal-content {
+        width: 60%;
+    }
+}
+
+@media only screen and (max-width: 375px){
+    .book-shelf{
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .modal-content{
+        width: 90%;
+    }
 }
