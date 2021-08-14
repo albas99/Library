@@ -1,28 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+body{
+    height: 100vh;
+}
+
 #heading{
     text-align: center;
     width: 100%;
     height: 5vh;
-    background-color: antiquewhite;
+    background: rgba(65, 177, 187, 0.5);
 }
 
 .container{
     width: 100%;
-    height: 95vh;
+    /* height: 100vh; */
+    background: url(/bg.jpeg) center no-repeat;
+    background-size: cover;
+    padding-top: 1rem;
 }
 
-.button{
+.add-button{
     background: transparent;
     border: none;
     font-size: 3rem;
-    position: absolute;
+    position: fixed;
     bottom: 2rem;
     right: 2rem;
+    color: rgb(3, 136, 160);
+    transition: all .5s ease-in-out;
+    z-index: 1;
+    
+}
+
+.add-button:hover{
+    transform: scale(2) rotate(90deg);
 }
 
 .book-shelf{
@@ -33,26 +50,37 @@
 }
 
 .card{
-    border: 1px solid black;
+    /* border: 1px solid black; */
     text-align: center;
     height: 25rem;
     display: flex;
     flex-direction: column;
     position: relative;
+    font-family: 'Noto Serif',
+    serif;
+    font-style: italic;
+    /* background: rgba(65, 177, 187, 0.7); */
+    /* border-radius: 15px; */
+    background: rgba(65, 177, 187, 0.5);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    /* transition-duration: .5s;
+    animation: reveal-card .5s ease; */
 }
-
-.card h2{
-    padding: 2rem 0;
-}
-
-.card h3{
-    margin: 1rem 0;
-}
-
-.card p{
-    margin: 1rem 0;
-    font-size: 1.2rem;
-}
+/* 
+@keyframes reveal-book{
+    0%{
+        opacity: 0;
+        transform: scale(.5);
+    }
+    100%{
+        opacity: 1;
+        transform: scale(1);
+    }
+} */
 
 .modal {
     display: none;
@@ -69,10 +97,17 @@
 
 .modal-content {
     background-color: #fefefe;
-    margin: 15% auto;
+    margin: 10% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 60%;
+    width: 40%;
+    background: rgba(65, 177, 187, 0.5);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    height: 60vh;
 }
 
 .modal-form {
@@ -98,28 +133,100 @@
     display: none;
 }
 
+.label{
+    font-size: 24px;
+    font-family: 'Noto Serif',
+    serif;
+    font-style: italic;
+}
+
+.input{
+    height: 28px;
+    border-radius: 10px;
+    padding: 0 1rem;
+    font-family: 'Noto Serif',
+    serif;
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 2rem;
+}
+
 .remove-book{
     width: 5rem;
     position: absolute;
     right: 1rem;
     bottom: 1rem;
+    font-family: 'Noto Serif',
+    serif;
+    font-style: italic;
+    height: 30px;
+    background: transparent;
+    border-radius: 15px;
+    transition: all .5s ease;
 }
 
-/* .update-book-button{
-    width: 5rem;
-    position: absolute;
-    left: 1rem;
-    bottom: 1rem;
-} */
+.remove-book:hover{
+    transform: scale(1.2);
+}
 
 .submit-book{
     display: block;
+    font-family: 'Noto Serif',
+    serif;
+    font-style: italic;
+    font-size: 36px;
+    background: transparent;
+    border-radius: 15px;
 }
 
-.update-book{
-    display: none;
+.reading-status{
+    width: 80%;
+    margin: 0 auto;
+    font-family: 'Noto Serif',
+serif;
+    font-style: italic;
+    background: transparent;
+    height: 30px;
+    border: 1px solid black;
+    border-radius: 15px;
 }
 
-.status{
-    
+.book-title{
+    padding: 2rem 0;
+    font-size: 28px;
+}
+
+.book-author{
+     margin: 1rem 0;
+    font-size: 20px;
+}
+
+.number-of-pages{
+    margin: 1rem 0;
+    font-size: 1.2rem;
+}
+
+@media only screen and (max-width: 1024px){
+    .book-shelf{
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .add-button{
+        z-index: 1;
+        position: fixed;
+    }
+
+    .modal-content {
+        width: 60%;
+    }
+}
+
+@media only screen and (max-width: 375px){
+    .book-shelf{
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .modal-content{
+        width: 90%;
+    }
 }

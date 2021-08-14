@@ -4,26 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <link rel="stylesheet" href="style.css">
     <script src="app.js" defer></script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
     <title>Library</title>
 </head>
+
 <body>
     <h1 id="heading">A simple Local Library</h1>
     <div class="container">
-    <button class="button addButton"><i class="fas fa-plus-circle"></i></button>
+    <button class="button add-button"><i class="fas fa-plus-circle"></i></button>
     <div class="book-shelf">
         <div class="modal">
             <div class="modal-content">
                 <span class="close-modal">&times;</span>
             <form class="modal-form">
-                <label for="title">Title</label>
-                <input type="text" name="title" id="title"  value="" required>
-                <label for="author">Author</label>
-                <input type="text" name="author" id="author" value="" required>
-                <label for="pages">No. of Pages</label>
-                <input type="number" name="pages" id="pages" value="" required>
+                <label for="title" class="label">Title</label>
+                <input type="text" name="title" id="title"  value="" class="input" required>
+                <label for="author" class="label">Author</label>
+                <input type="text" name="author" id="author" value="" class="input" required>
+                <label for="pages" class="label">No. of Pages</label>
+                <input type="number" name="pages" id="pages" value="" class="input" required>
                 <button type="submit" value="Add" class="submit-book">Add</button>
             </form>
             </div>

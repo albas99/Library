@@ -3,7 +3,7 @@ let myLibrary = [];
 let bookShelf = document.querySelector(".book-shelf");
 
 const modal = document.querySelector(".modal");
-const addButton = document.querySelector(".addButton");
+const addButton = document.querySelector(".add-button");
 const closeModalButton = document.querySelector(".close-modal");
 addButton.addEventListener("click", displayModal);
 closeModalButton.addEventListener("click", closeModal);
@@ -53,23 +53,31 @@ function createBookCard(book) {
   let numberOfPages = document.createElement("p");
   let readingStatus = document.createElement("select");
   let notRead = document.createElement("option");
-  notRead.textContent = "Not Read";
   let currentlyReading = document.createElement("option");
-  currentlyReading.textContent = "Currently Reading";
   let read = document.createElement("option");
+  let removeBookButton = document.createElement("button");
+
+  notRead.textContent = "Not Read";
+  currentlyReading.textContent = "Currently Reading";
   read.textContent = "Read";
+  bookTitle.textContent = `${book.title}`;
+  bookAuthor.textContent = `${book.author}`;
+  numberOfPages.textContent = `${book.pages} pages`;
+
+  removeBookButton.addEventListener("click", removeBookFromLibrary);
+  
+  card.setAttribute("class", "card");
+  card.setAttribute("data-book-id", book.id);
+  readingStatus.setAttribute('class', 'reading-status');
+  removeBookButton.setAttribute("class", "remove-book");
+  bookTitle.setAttribute("class", "book-title");
+  bookAuthor.setAttribute("class", "book-author");
+  numberOfPages.setAttribute("class", "number-of-pages");
+  
   readingStatus.append(notRead);
   readingStatus.append(currentlyReading);
   readingStatus.append(read);
-  let removeBookButton = document.createElement("button");
   removeBookButton.append("Remove");
-  removeBookButton.setAttribute("class", "remove-book");
-  removeBookButton.addEventListener("click", removeBookFromLibrary);
-    bookTitle.textContent = `${book.title}`;
-    bookAuthor.textContent = `${book.author}`;
-  numberOfPages.textContent = `${book.pages} pages`;
-    card.setAttribute("class", "card");
-    card.setAttribute("data-book-id", book.id);
     card.append(bookTitle);
     card.append(bookAuthor);
     card.append(numberOfPages);
