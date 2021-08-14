@@ -16,13 +16,18 @@
     height: 95vh;
 }
 
-.button{
+.add-button{
     background: transparent;
     border: none;
     font-size: 3rem;
     position: absolute;
     bottom: 2rem;
     right: 2rem;
+    transition: all .5s ease-in-out;
+}
+
+.add-button:hover{
+    transform: scale(2) rotate(90deg);
 }
 
 .book-shelf{
@@ -120,6 +125,7 @@
     display: none;
 }
 
-.status{
-    
+.reading-status{
+    width: 80%;
+    margin: 0 auto;
 }
