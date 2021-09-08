@@ -22,13 +22,24 @@ let pages = document.querySelector("#pages");
 generateRandomId = () => {
   return Math.floor(Math.random() * 10000);
 };
-function Book(title, author, pages, id) {
-  this.title = title.value;
-  this.author = author.value;
-  this.pages = pages.value;
-  // this.pagesRead = pagesRead.value;
-  this.id = generateRandomId();
+
+class Book{
+  constructor(title, author, pages, id) {
+    this.title = title.value;
+    this.author = author.value;
+    this.pages = pages.value;
+    // this.pagesRead = pagesRead.value;
+    this.id = generateRandomId();
+  }
 }
+
+// function Book(title, author, pages, id) {
+//   this.title = title.value;
+//   this.author = author.value;
+//   this.pages = pages.value;
+//   // this.pagesRead = pagesRead.value;
+//   this.id = generateRandomId();
+// }
 
 function createNewBook(e) {
   e.preventDefault();
